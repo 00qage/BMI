@@ -1,0 +1,260 @@
+@import "grid";
+@import "reset";
+@mixin color($color) {
+    color: $color;
+}
+@keyframes spin {
+    to { 
+      transform: rotate(1turn); 
+    }
+}
+@keyframes spin-reverse {
+    from { 
+      transform: rotate(1turn); 
+    }
+}
+@mixin send-color-border($color,$right) {
+    color: $color;
+        border: 6px solid $color;
+        span{
+            color: $color;
+        }
+        .send-icon {
+            // animation: spin 1s infinite linear;
+            // transform-origin: 0% 62px; 
+            box-sizing: border-box;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background:$color;
+            border: 2px solid #424242;
+            border-radius: 50%;
+            i{
+                position: absolute;
+                right: 4.15px;
+                bottom: 3px;
+                font-family: fontawesome;
+                font-size: 20px;
+                color: #424242;
+            }
+        }
+        h2 {
+            position: absolute;
+            right: $right;
+            bottom: 40px;
+            font-size: 32px;
+        }
+}
+
+
+
+body {
+    font-family: 微軟正黑體;
+}
+
+.wrap {
+    margin: 0 auto;
+    max-width: 1024px;
+    font-family: 微軟正黑體;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 74px 0;
+    justify-content: space-between;
+    background: #424242;
+    .header-logo {
+        margin-left: 170px;
+    }
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        label {
+            font-size: 18px;
+            color: #FFD366;
+            margin-bottom: 7px;
+        }
+    }
+    .header-height,
+    .header-weight {
+        display: block;
+        width: 100%;
+        padding: 6px 0 6px 14px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 2px solid #FFD366;
+        border-radius: 10px; // font-family: .SFNSDisplay;
+        font-size: 20px;
+        line-height: 24px;
+        color: rgba(255, 255, 255, 0.50);
+        outline: none;
+        &::-webkit-input-placeholder,
+        {
+            font-family: 微軟正黑體;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.50);
+        }
+    }
+    .header-height {
+        margin-bottom: 23px;
+    }
+    .send {
+        margin-right: 170px;
+        width: 120px;
+        height: 120px;
+        border: none;
+        border-radius: 50%;
+        background: #FFD366;
+        font-size: 24px;
+        line-height: 120px;
+        text-align: center;
+        font-weight: bold;
+        font-family: 微軟正黑體;
+        color: rgb(66, 66, 66);
+        outline: none;
+        &:hover {
+            background: #FFD366;
+            box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
+            cursor: pointer;
+        }
+        &:active {
+            background: #DEA921;
+        }
+    }
+    .send-onclick {
+        position: relative;
+        box-sizing: border-box;
+        margin-right: 170px;
+        padding-top: 35px;
+        width: 120px;
+        height: 120px;
+        border: none;
+        border-radius: 50%;
+        background: #424242;
+        font-size: 32px;
+        text-align: center;
+        color: #7a7a7a;
+        border: 6px solid #7a7a7a;
+        &:hover {
+            cursor: pointer;
+        }
+        span {
+            position: absolute;
+            z-index: 10;
+            right: 40px;
+            bottom: 25px;
+            font-size: 14px;
+            color: #7a7a7a;
+        }
+    }
+    .send-Underweight {
+        @include send-color-border(#31BAF9,-82px)
+    }
+    .send-NormalRange {
+        @include send-color-border(#86D73E,-82px)
+    }
+    .send-Overweight {
+        @include send-color-border(#FF982D,-82px)
+    }
+    .send-Overweight-AtRisk {
+        @include send-color-border(#FF6C02,-146px)
+    }
+    .send-Overweight-ModeratelyObese {
+        @include send-color-border(#ff3d02,-146px)
+    }
+    .send-Overweight-SeverelyObese {
+        @include send-color-border(#FF1200,-146px)
+    }
+}
+
+.BMI-Record {
+    padding: 48px 200px 74px 200px;
+    background: rgb(245, 245, 245);
+    .BMI-Record-title {
+        margin-bottom: 36px;
+        font-weight: bold;
+        font-family: 微軟正黑體;
+        font-size: 24px;
+        text-align: center;
+        color: #424242;
+    }
+    .BMI-Record-List {
+        li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-top: 16px;
+            padding: 0 12px 0 5px;
+            height: 62px;
+            font-family: 微軟正黑體;
+            font-size: 20px;
+            color: #4A4A4A;
+            background: #FFFFFF; // BMI顏色
+            .color {
+                position: absolute;
+                left: 0;
+                width: 7px;
+                height: 62px;
+                background: rgb(153, 153, 153);
+                box-shadow: 2px 0 3px 0 rgba(175, 175, 175, 0.29);
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .Underweight {
+                background: #31BAF9;
+                box-shadow: 2px 0 3px 0 rgba(49, 186, 249, 0.29);
+            }
+            .NormalRange {
+                background: #86D73F;
+                box-shadow: 2px 0 3px 0 rgba(133, 215, 63, 0.29);
+            }
+            .Overweight {
+                background: #FF982D;
+                box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+            }
+            .Overweight-AtRisk {
+                background: #FF6C02;
+                box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+            }
+            .Overweight-ModeratelyObese {
+                background: #ff3d02;
+                box-shadow: 2px 0 3px 0 rgba(255, 108, 2, 0.29);
+            }
+            .Overweight-SeverelyObese {
+                background: #FF1200;
+                box-shadow: 2px 0 3px 0 rgba(255, 17, 0, 0.29);
+            }
+            .BMI-Record-List-box {
+                display: flex;
+                align-items: center;
+                font-family: 微軟正黑體;
+                font-size: 12px;
+                color: #424242;
+                em {
+                    margin-left: 7px;
+                    font-size: 20px;
+                    color: #4A4A4A;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    padding: 18px 0;
+    background: #FFD366;
+    .footer-logo {
+        text-align: center;
+        img {
+            width: 55px;
+            height: 55px;
+        }
+    }
+}
