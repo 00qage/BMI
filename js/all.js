@@ -1,3 +1,4 @@
+$(document).ready(function () {
 // 指定 dom
 var textHeight = document.querySelector('#userheight');
 var textWeight = document.querySelector('#userweight');
@@ -30,7 +31,7 @@ body.addEventListener('keydown', function (e) {
   });
 textHeight.addEventListener('focus', sendReset);
 textWeight.addEventListener('focus', sendReset);
-list.addEventListener('click', toggleDone);
+// list.addEventListener('click', toggleDone);
 updateList(BMIdata);
 //加入列表，並同步更新網頁與 localstorage
 // function addDataEnter(e) {
@@ -127,11 +128,11 @@ function sendReset() {
 // 更新網頁內容
 function updateList(items) {
     list.textContent = '';
-    BMIdata.on('value', function (snapshot) {
+    BMIdata.once('value', function (snapshot) {
         const data = snapshot.val();
         for (const i in data) {
             var createLi = document.createElement('li');
-            createLi.setAttribute('class', 'ToDelete')
+            createLi.setAttribute('class', 'ToDelete animate1')
             list.appendChild(createLi);
             // createLi.textContent = ;
             var createA = document.createElement('a');
@@ -198,18 +199,28 @@ function updateList(items) {
     })
 }
 // 刪除代辦事項
-list.addEventListener('click', function (param) {})
 
-function toggleDone(e) {
-    e.preventDefault();
-    if (e.target.nodeName !== 'A') {
-        return
-    }
-    // console.log(e.target.nodeName);
+// function toggleDone(e) {
+//     e.preventDefault();
+//     if (e.target.nodeName !== 'A') {
+//         return
+//     }
+//     // console.log(e.target.nodeName);
+//     var key = e.target.dataset.number;
+//     BMIdata.child(key).remove();
+//     updateList(BMIdata);
+// }
+$(list).on('click','.color', function (e) {
+    $(this).parent('.ToDelete').fadeOut(1000,function () {
+        $(this).remove();
+      }
+    );
+    
     var key = e.target.dataset.number;
     BMIdata.child(key).remove();
     updateList(BMIdata);
-}
+});
+
 // function toggleDone(e) {
 //     e.preventDefault();
 //     if (e.target.nodeName !== 'A') {
@@ -221,3 +232,7 @@ function toggleDone(e) {
 //     localStorage.setItem('BMIData', JSON.stringify(data));
 //     updateList(data);
 // }
+
+
+   
+});
