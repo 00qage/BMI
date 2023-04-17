@@ -1,144 +1,143 @@
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+import {
+    getAnalytics
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
 
-import {initializeApp} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-import {getAnalytics} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+// 指定 dom
+var textHeight = document.querySelector('#userheight');
+var textWeight = document.querySelector('#userweight');
+var sendData = document.querySelector('#sendId');
+var list = document.querySelector('.BMI-Record-List');
+var body = document.body;
 
-    // 指定 dom
-    var textHeight = document.querySelector('#userheight');
-    var textWeight = document.querySelector('#userweight');
-    var sendData = document.querySelector('#sendId');
-    var list = document.querySelector('.BMI-Record-List');
-    var body = document.body;
+var BMIdata = [];
+var webData = [];
 
-    var BMIdata = [];
-    var webData = [];
+//firebase
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyB5z9bpL7W4X2V8jBuGsvmqcMimFYOVebs",
+    authDomain: "bmi-test-f77db.firebaseapp.com",
+    projectId: "bmi-test-f77db",
+    storageBucket: "bmi-test-f77db.appspot.com",
+    messagingSenderId: "136678421371",
+    appId: "1:136678421371:web:0ac6d6b9e4490ee1fb03de",
+    measurementId: "G-T0PS32NEK2"
+};
+// // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+getData();
 
-    //firebase
-    // Initialize Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyB5z9bpL7W4X2V8jBuGsvmqcMimFYOVebs",
-        authDomain: "bmi-test-f77db.firebaseapp.com",
-        projectId: "bmi-test-f77db",
-        storageBucket: "bmi-test-f77db.appspot.com",
-        messagingSenderId: "136678421371",
-        appId: "1:136678421371:web:0ac6d6b9e4490ee1fb03de",
-        measurementId: "G-T0PS32NEK2"
-    };
-    // // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getFirestore(app);
-    getData();
-    function getData() {
-        getDocs(collection(db, "bmi")).then(
-            docSnap => {
-                let bmis = [];
-                docSnap.forEach(doc => {
-                    bmis.push({
-                        ...doc.data(),
-                        id: doc.id
-                    });
+function getData() {
+    getDocs(collection(db, "bmi")).then(
+        docSnap => {
+            let bmis = [];
+            docSnap.forEach(doc => {
+                bmis.push({
+                    ...doc.data(),
+                    id: doc.id
                 });
-                webData = bmis;
-                updateList(webData);
-                console.log(webData);
-            }
-        );
-    };
+            });
+            webData = bmis;
+            updateList(webData);
+            console.log(webData);
+        }
+    );
+};
 
-    
-    // 更新網頁內容
-    function updateList(data) {
-        list.textContent = '';
-        for (const i in data) {
-            var createLi = document.createElement('li');
-            createLi.setAttribute('class', 'ToDelete animate1')
-            list.appendChild(createLi);
-            // createLi.textContent = ;
-            var createA = document.createElement('a');
-            var createDiv = document.createElement('div');
-            var createEm = document.createElement('em');
-            createLi.appendChild(createA);
-            createA.setAttribute('data-number', i);
-            if (data[i].B <= 18.5) {
-                createA.setAttribute('class', 'color Underweight');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "過輕";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            } else if (data[i].B >= 18.5 && data[i].B < 24) {
-                createA.setAttribute('class', 'color NormalRange');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "理想";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            } else if (data[i].B >= 24 && data[i].B < 27) {
-                createA.setAttribute('class', 'color Overweight');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "過重";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            } else if (data[i].B >= 27 && data[i].B < 30) {
-                createA.setAttribute('class', 'color Overweight-AtRisk');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "輕度肥胖";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            } else if (data[i].B >= 30 && data[i].B < 35) {
-                createA.setAttribute('class', 'color Overweight-ModeratelyObese');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "中度肥胖";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            } else if (data[i].B >= 35) {
-                createA.setAttribute('class', 'color Overweight-SeverelyObese');
-                createDiv.setAttribute('class', 'BMI-Record-List-box');
-                createEm.textContent = "重度肥胖";
-                createDiv.appendChild(createEm.cloneNode(true));
-                createLi.appendChild(createDiv.cloneNode(true));
-            }
-
-            createEm.textContent = data[i].B;
-            createDiv.textContent = 'BMI';
+// 更新網頁內容
+function updateList(data) {
+    list.textContent = '';
+    for (const i in data) {
+        var createLi = document.createElement('li');
+        createLi.setAttribute('class', 'ToDelete animate1')
+        list.appendChild(createLi);
+        // createLi.textContent = ;
+        var createA = document.createElement('a');
+        var createDiv = document.createElement('div');
+        var createEm = document.createElement('em');
+        createLi.appendChild(createA);
+        createA.setAttribute('data-number', i);
+        createA.setAttribute('data-id', data[i].id);
+        if (data[i].B <= 18.5) {
+            createA.setAttribute('class', 'color Underweight');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "過輕";
             createDiv.appendChild(createEm.cloneNode(true));
             createLi.appendChild(createDiv.cloneNode(true));
-
-            createEm.textContent = data[i].W + 'kg';
-            createDiv.textContent = 'weight';
+        } else if (data[i].B >= 18.5 && data[i].B < 24) {
+            createA.setAttribute('class', 'color NormalRange');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "理想";
             createDiv.appendChild(createEm.cloneNode(true));
             createLi.appendChild(createDiv.cloneNode(true));
-
-            createEm.textContent = data[i].H + 'cm';
-            createDiv.textContent = 'height';
+        } else if (data[i].B >= 24 && data[i].B < 27) {
+            createA.setAttribute('class', 'color Overweight');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "過重";
             createDiv.appendChild(createEm.cloneNode(true));
             createLi.appendChild(createDiv.cloneNode(true));
-
-            createDiv.textContent = data[i].M + "-" + data[i].D + "-" + data[i].Y;
+        } else if (data[i].B >= 27 && data[i].B < 30) {
+            createA.setAttribute('class', 'color Overweight-AtRisk');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "輕度肥胖";
+            createDiv.appendChild(createEm.cloneNode(true));
+            createLi.appendChild(createDiv.cloneNode(true));
+        } else if (data[i].B >= 30 && data[i].B < 35) {
+            createA.setAttribute('class', 'color Overweight-ModeratelyObese');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "中度肥胖";
+            createDiv.appendChild(createEm.cloneNode(true));
+            createLi.appendChild(createDiv.cloneNode(true));
+        } else if (data[i].B >= 35) {
+            createA.setAttribute('class', 'color Overweight-SeverelyObese');
+            createDiv.setAttribute('class', 'BMI-Record-List-box');
+            createEm.textContent = "重度肥胖";
+            createDiv.appendChild(createEm.cloneNode(true));
             createLi.appendChild(createDiv.cloneNode(true));
         }
-    }
 
-    // var BMIdata = getData() || [];
+        createEm.textContent = data[i].B;
+        createDiv.textContent = 'BMI';
+        createDiv.appendChild(createEm.cloneNode(true));
+        createLi.appendChild(createDiv.cloneNode(true));
+
+        createEm.textContent = data[i].W + 'kg';
+        createDiv.textContent = 'weight';
+        createDiv.appendChild(createEm.cloneNode(true));
+        createLi.appendChild(createDiv.cloneNode(true));
+
+        createEm.textContent = data[i].H + 'cm';
+        createDiv.textContent = 'height';
+        createDiv.appendChild(createEm.cloneNode(true));
+        createLi.appendChild(createDiv.cloneNode(true));
+
+        createDiv.textContent = data[i].M + "-" + data[i].D + "-" + data[i].Y;
+        createLi.appendChild(createDiv.cloneNode(true));
+    }
+}
+
+function clickBtn(e) {
+    console.log(e);
+}
+
+// var BMIdata = getData() || [];
 // console.log(BMIdata);
 
 $(document).ready(function () {
-
-    // var header =document.querySelector('.header');
-    // var data = JSON.parse(localStorage.getItem('BMIData')) || [];
-
-
-    //firebase
-    // Initialize Firebase
-    // var config = {
-    //     apiKey: "AIzaSyD5DOPAkwvouPveyoIPoyUaB-fvRhmX_fQ",
-    //     authDomain: "project-8fdae.firebaseapp.com",
-    //     databaseURL: "https://project-8fdae.firebaseio.com",
-    //     projectId: "project-8fdae",
-    //     storageBucket: "project-8fdae.appspot.com",
-    //     messagingSenderId: "886236257267"
-    // };
-    // firebase.initializeApp(config);
-
+    var bmiBtn = document.querySelector('.color');
 
     // 監聽與更新
     sendData.addEventListener('click', addData);
@@ -147,6 +146,12 @@ $(document).ready(function () {
             addData();
         }
     });
+    $('.color').click(function (e) {
+        e.preventDefault();
+        clickBtn(e);
+    });
+    // bmiBtn.addEventListener('click', clickBtn);
+
     textHeight.addEventListener('focus', sendReset);
     textWeight.addEventListener('focus', sendReset);
     // list.addEventListener('click', toggleDone);
@@ -184,10 +189,10 @@ $(document).ready(function () {
             D: Day,
         };
         console.log(BMIchange);
-        addDoc(collection(db, "bmi"),BMIchange);
+        addDoc(collection(db, "bmi"), BMIchange);
         webData.push(BMIchange);
         // localStorage.setItem('BMIData', JSON.stringify(data));
-        
+
         updateList(webData);
         sendChange(BMI);
         textHeight.value = '';
@@ -256,9 +261,9 @@ $(document).ready(function () {
     $(list).on('click', '.color', function (e) {
         $(this).parent('.ToDelete').fadeOut(1000, function () {
             $(this).remove();
-            var key = e.target.dataset.number;
-            BMIdata.child(key).remove();
-            updateList(BMIdata);
+            var key = e.target.dataset.id;
+            deleteDoc(doc(db, "bmi", key));
+            getData();
         });
     });
 
