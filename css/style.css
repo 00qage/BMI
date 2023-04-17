@@ -9,417 +9,436 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 q:before, q:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .clearfix {
-  clear: both; }
-
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn); } }
+  clear: both;
+}
 
 @keyframes spin {
   to {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn); } }
-
-@-webkit-keyframes spin-reverse {
-  from {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn); } }
-
+    transform: rotate(1turn);
+  }
+}
 @keyframes spin-reverse {
   from {
-    -webkit-transform: rotate(1turn);
-    transform: rotate(1turn); } }
-
+    transform: rotate(1turn);
+  }
+}
 body {
-  font-family: 微軟正黑體; }
+  font-family: 微軟正黑體;
+}
 
 .wrap {
   margin: 0 auto;
   max-width: 1024px;
-  font-family: 微軟正黑體; }
+  font-family: 微軟正黑體;
+}
 
 .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   padding: 74px 0;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  background: #424242; }
-  .header .header-logo {
-    margin-left: 170px; }
-  .header .header-text {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 250px; }
-    .header .header-text label {
-      font-size: 18px;
-      color: #FFD366;
-      margin-bottom: 7px; }
-  .header .header-height,
-  .header .header-weight {
-    display: block;
-    width: 100%;
-    padding: 6px 0 6px 14px;
-    background: rgba(255, 255, 255, 0.18);
-    border: 2px solid #FFD366;
-    border-radius: 10px;
-    font-size: 20px;
-    line-height: 24px;
-    color: rgba(255, 255, 255, 0.5);
-    outline: none; }
-    .header .header-height::-webkit-input-placeholder,
-    .header .header-weight::-webkit-input-placeholder {
-      font-family: 微軟正黑體;
-      font-size: 24px;
-      color: rgba(255, 255, 255, 0.5); }
-  .header .header-height {
-    margin-bottom: 23px; }
-  .header .send {
-    margin-right: 170px;
-    width: 120px;
-    height: 120px;
-    border: none;
-    border-radius: 50%;
-    background: #FFD366;
-    font-size: 24px;
-    line-height: 120px;
-    text-align: center;
-    font-weight: bold;
-    font-family: 微軟正黑體;
-    color: #424242;
-    outline: none; }
-    .header .send:hover {
-      background: #FFD366;
-      -webkit-box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
-      box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
-      cursor: pointer; }
-    .header .send:active {
-      background: #DEA921; }
-  .header .send-onclick {
-    position: relative;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-right: 170px;
-    padding-top: 35px;
-    width: 120px;
-    height: 120px;
-    border: none;
-    border-radius: 50%;
-    background: #424242;
-    font-size: 32px;
-    text-align: center;
-    color: #7a7a7a;
-    border: 6px solid #7a7a7a; }
-    .header .send-onclick:hover {
-      cursor: pointer; }
-    .header .send-onclick span {
-      position: absolute;
-      z-index: 10;
-      right: 40px;
-      bottom: 25px;
-      font-size: 14px;
-      color: #7a7a7a; }
-  .header .send-Underweight {
-    color: #31BAF9;
-    border: 6px solid #31BAF9; }
-    .header .send-Underweight span {
-      color: #31BAF9; }
-    .header .send-Underweight .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #31BAF9;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-Underweight .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-Underweight h2 {
-      position: absolute;
-      right: -82px;
-      bottom: 40px;
-      font-size: 32px; }
-  .header .send-NormalRange {
-    color: #86D73E;
-    border: 6px solid #86D73E; }
-    .header .send-NormalRange span {
-      color: #86D73E; }
-    .header .send-NormalRange .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #86D73E;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-NormalRange .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-NormalRange h2 {
-      position: absolute;
-      right: -82px;
-      bottom: 40px;
-      font-size: 32px; }
-  .header .send-Overweight {
-    color: #FF982D;
-    border: 6px solid #FF982D; }
-    .header .send-Overweight span {
-      color: #FF982D; }
-    .header .send-Overweight .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #FF982D;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-Overweight .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-Overweight h2 {
-      position: absolute;
-      right: -82px;
-      bottom: 40px;
-      font-size: 32px; }
-  .header .send-Overweight-AtRisk {
-    color: #FF6C02;
-    border: 6px solid #FF6C02; }
-    .header .send-Overweight-AtRisk span {
-      color: #FF6C02; }
-    .header .send-Overweight-AtRisk .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #FF6C02;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-Overweight-AtRisk .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-Overweight-AtRisk h2 {
-      position: absolute;
-      right: -146px;
-      bottom: 40px;
-      font-size: 32px; }
-  .header .send-Overweight-ModeratelyObese {
-    color: #ff3d02;
-    border: 6px solid #ff3d02; }
-    .header .send-Overweight-ModeratelyObese span {
-      color: #ff3d02; }
-    .header .send-Overweight-ModeratelyObese .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #ff3d02;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-Overweight-ModeratelyObese .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-Overweight-ModeratelyObese h2 {
-      position: absolute;
-      right: -146px;
-      bottom: 40px;
-      font-size: 32px; }
-  .header .send-Overweight-SeverelyObese {
-    color: #FF1200;
-    border: 6px solid #FF1200; }
-    .header .send-Overweight-SeverelyObese span {
-      color: #FF1200; }
-    .header .send-Overweight-SeverelyObese .send-icon {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30px;
-      height: 30px;
-      background: #FF1200;
-      border: 2px solid #424242;
-      border-radius: 50%; }
-      .header .send-Overweight-SeverelyObese .send-icon i {
-        position: absolute;
-        right: 4.15px;
-        bottom: 3px;
-        font-family: fontawesome;
-        font-size: 20px;
-        color: #424242; }
-    .header .send-Overweight-SeverelyObese h2 {
-      position: absolute;
-      right: -146px;
-      bottom: 40px;
-      font-size: 32px; }
+  background: #424242;
+}
+.header .header-logo {
+  margin-left: 170px;
+}
+.header .header-text {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+.header .header-text label {
+  font-size: 18px;
+  color: #FFD366;
+  margin-bottom: 7px;
+}
+.header .header-height,
+.header .header-weight {
+  display: block;
+  width: 100%;
+  padding: 6px 0 6px 14px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid #FFD366;
+  border-radius: 10px;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  outline: none;
+}
+.header .header-height::-webkit-input-placeholder,
+.header .header-weight::-webkit-input-placeholder {
+  font-family: 微軟正黑體;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.header .header-height {
+  margin-bottom: 23px;
+}
+.header .send {
+  margin-right: 170px;
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 50%;
+  background: #FFD366;
+  font-size: 24px;
+  line-height: 120px;
+  text-align: center;
+  font-weight: bold;
+  font-family: 微軟正黑體;
+  color: rgb(66, 66, 66);
+  outline: none;
+}
+.header .send:hover {
+  background: #FFD366;
+  box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
+  cursor: pointer;
+}
+.header .send:active {
+  background: #DEA921;
+}
+.header .send-onclick {
+  position: relative;
+  box-sizing: border-box;
+  margin-right: 170px;
+  padding-top: 35px;
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 50%;
+  background: #424242;
+  font-size: 32px;
+  text-align: center;
+  color: #7a7a7a;
+  border: 6px solid #7a7a7a;
+}
+.header .send-onclick:hover {
+  cursor: pointer;
+}
+.header .send-onclick span {
+  position: absolute;
+  z-index: 10;
+  right: 40px;
+  bottom: 25px;
+  font-size: 14px;
+  color: #7a7a7a;
+}
+.header .send-Underweight {
+  color: #31BAF9;
+  border: 6px solid #31BAF9;
+}
+.header .send-Underweight span {
+  color: #31BAF9;
+}
+.header .send-Underweight .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #31BAF9;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-Underweight .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-Underweight h2 {
+  position: absolute;
+  right: -82px;
+  bottom: 40px;
+  font-size: 32px;
+}
+.header .send-NormalRange {
+  color: #86D73E;
+  border: 6px solid #86D73E;
+}
+.header .send-NormalRange span {
+  color: #86D73E;
+}
+.header .send-NormalRange .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #86D73E;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-NormalRange .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-NormalRange h2 {
+  position: absolute;
+  right: -82px;
+  bottom: 40px;
+  font-size: 32px;
+}
+.header .send-Overweight {
+  color: #FF982D;
+  border: 6px solid #FF982D;
+}
+.header .send-Overweight span {
+  color: #FF982D;
+}
+.header .send-Overweight .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #FF982D;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-Overweight .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-Overweight h2 {
+  position: absolute;
+  right: -82px;
+  bottom: 40px;
+  font-size: 32px;
+}
+.header .send-Overweight-AtRisk {
+  color: #FF6C02;
+  border: 6px solid #FF6C02;
+}
+.header .send-Overweight-AtRisk span {
+  color: #FF6C02;
+}
+.header .send-Overweight-AtRisk .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #FF6C02;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-Overweight-AtRisk .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-Overweight-AtRisk h2 {
+  position: absolute;
+  right: -146px;
+  bottom: 40px;
+  font-size: 32px;
+}
+.header .send-Overweight-ModeratelyObese {
+  color: #ff3d02;
+  border: 6px solid #ff3d02;
+}
+.header .send-Overweight-ModeratelyObese span {
+  color: #ff3d02;
+}
+.header .send-Overweight-ModeratelyObese .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #ff3d02;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-Overweight-ModeratelyObese .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-Overweight-ModeratelyObese h2 {
+  position: absolute;
+  right: -146px;
+  bottom: 40px;
+  font-size: 32px;
+}
+.header .send-Overweight-SeverelyObese {
+  color: #FF1200;
+  border: 6px solid #FF1200;
+}
+.header .send-Overweight-SeverelyObese span {
+  color: #FF1200;
+}
+.header .send-Overweight-SeverelyObese .send-icon {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: #FF1200;
+  border: 2px solid #424242;
+  border-radius: 50%;
+}
+.header .send-Overweight-SeverelyObese .send-icon i {
+  position: absolute;
+  right: 4.15px;
+  bottom: 3px;
+  font-family: fontawesome;
+  font-size: 20px;
+  color: #424242;
+}
+.header .send-Overweight-SeverelyObese h2 {
+  position: absolute;
+  right: -146px;
+  bottom: 40px;
+  font-size: 32px;
+}
 
 .BMI-Record {
   padding: 48px 200px 74px 200px;
-  background: whitesmoke; }
-  .BMI-Record .BMI-Record-title {
-    margin-bottom: 36px;
-    font-weight: bold;
-    font-family: 微軟正黑體;
-    font-size: 24px;
-    text-align: center;
-    color: #424242; }
-  .BMI-Record .BMI-Record-List li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: relative;
-    margin-top: 16px;
-    padding: 0 12px 0 5px;
-    height: 62px;
-    font-family: 微軟正黑體;
-    font-size: 20px;
-    color: #4A4A4A;
-    background: #FFFFFF; }
-    .BMI-Record .BMI-Record-List li .color {
-      position: absolute;
-      left: 0;
-      width: 7px;
-      height: 62px;
-      background: #999999;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(175, 175, 175, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(175, 175, 175, 0.29); }
-      .BMI-Record .BMI-Record-List li .color:hover {
-        cursor: pointer; }
-    .BMI-Record .BMI-Record-List li .Underweight {
-      background: #31BAF9;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(49, 186, 249, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(49, 186, 249, 0.29); }
-    .BMI-Record .BMI-Record-List li .NormalRange {
-      background: #86D73F;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(133, 215, 63, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(133, 215, 63, 0.29); }
-    .BMI-Record .BMI-Record-List li .Overweight {
-      background: #FF982D;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29); }
-    .BMI-Record .BMI-Record-List li .Overweight-AtRisk {
-      background: #FF6C02;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29); }
-    .BMI-Record .BMI-Record-List li .Overweight-ModeratelyObese {
-      background: #ff3d02;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(255, 108, 2, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(255, 108, 2, 0.29); }
-    .BMI-Record .BMI-Record-List li .Overweight-SeverelyObese {
-      background: #FF1200;
-      -webkit-box-shadow: 2px 0 3px 0 rgba(255, 17, 0, 0.29);
-      box-shadow: 2px 0 3px 0 rgba(255, 17, 0, 0.29); }
-    .BMI-Record .BMI-Record-List li .BMI-Record-List-box {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      font-family: 微軟正黑體;
-      font-size: 12px;
-      color: #424242; }
-      .BMI-Record .BMI-Record-List li .BMI-Record-List-box em {
-        margin-left: 7px;
-        font-size: 20px;
-        color: #4A4A4A; }
+  background: rgb(245, 245, 245);
+}
+.BMI-Record .BMI-Record-title {
+  margin-bottom: 36px;
+  font-weight: bold;
+  font-family: 微軟正黑體;
+  font-size: 24px;
+  text-align: center;
+  color: #424242;
+}
+.BMI-Record .BMI-Record-List li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 16px;
+  padding: 0 12px 0 5px;
+  height: 62px;
+  font-family: 微軟正黑體;
+  font-size: 20px;
+  color: #4A4A4A;
+  background: #FFFFFF;
+}
+.BMI-Record .BMI-Record-List li .color {
+  position: absolute;
+  left: 0;
+  width: 7px;
+  height: 62px;
+  background: rgb(153, 153, 153);
+  box-shadow: 2px 0 3px 0 rgba(175, 175, 175, 0.29);
+}
+.BMI-Record .BMI-Record-List li .color:hover {
+  cursor: pointer;
+}
+.BMI-Record .BMI-Record-List li .Underweight {
+  background: #31BAF9;
+  box-shadow: 2px 0 3px 0 rgba(49, 186, 249, 0.29);
+}
+.BMI-Record .BMI-Record-List li .NormalRange {
+  background: #86D73F;
+  box-shadow: 2px 0 3px 0 rgba(133, 215, 63, 0.29);
+}
+.BMI-Record .BMI-Record-List li .Overweight {
+  background: #FF982D;
+  box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+}
+.BMI-Record .BMI-Record-List li .Overweight-AtRisk {
+  background: #FF6C02;
+  box-shadow: 2px 0 3px 0 rgba(255, 152, 45, 0.29);
+}
+.BMI-Record .BMI-Record-List li .Overweight-ModeratelyObese {
+  background: #ff3d02;
+  box-shadow: 2px 0 3px 0 rgba(255, 108, 2, 0.29);
+}
+.BMI-Record .BMI-Record-List li .Overweight-SeverelyObese {
+  background: #FF1200;
+  box-shadow: 2px 0 3px 0 rgba(255, 17, 0, 0.29);
+}
+.BMI-Record .BMI-Record-List li .BMI-Record-List-box {
+  display: flex;
+  align-items: center;
+  font-family: 微軟正黑體;
+  font-size: 12px;
+  color: #424242;
+}
+.BMI-Record .BMI-Record-List li .BMI-Record-List-box em {
+  margin-left: 7px;
+  font-size: 20px;
+  color: #4A4A4A;
+}
 
 .footer {
   padding: 18px 0;
-  background: #FFD366; }
-  .footer .footer-logo {
-    text-align: center; }
-    .footer .footer-logo img {
-      width: 55px;
-      height: 55px; }
+  background: #FFD366;
+}
+.footer .footer-logo {
+  text-align: center;
+}
+.footer .footer-logo img {
+  width: 55px;
+  height: 55px;
+}/*# sourceMappingURL=style.css.map */
